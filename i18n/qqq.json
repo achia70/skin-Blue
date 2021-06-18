@@ -1,0 +1,7 @@
+{
+	"@metadata": {
+		"authors": [ "..." ]
+	},
+	"skinname-blue": "{{optional}}",
+	"blue-desc": "{{desc|what=skin|name=Blue|url=https://www.mediawiki.org/wiki/Skin:Blue}}"
+}
