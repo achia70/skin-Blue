@@ -2,7 +2,43 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
 <div id="mw-wrapper">
-	<div class="mw-body" id="content" role="main">
+	<nav id="mw-navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<div id="p-logo" class="mw-portlet" role="banner">
+				<a href="{{link-mainpage}}">
+					{{#data-logos}}
+					{{#icon}}<img src="{{.}}" width="40" height="40">{{/icon}}
+					{{#wordmark}}<img src="{{src}}" width="{{width}}" height="{{height}}">{{/wordmark}}
+					{{^wordmark}}<h1>{{msg-sitetitle}}</h1>{{/wordmark}}
+					{{/data-logos}}
+				</a>
+			</div>
+			{{#data-search-box}}
+			<form action="{{form-action}}" role="search" class="mw-portlet d-flex" id="p-search" class="form-control me-2">
+				<input type="hidden" name="title" value="{{page-title}}">
+				{{{html-input}}}
+				{{{html-button-search}}}
+			</form>
+			{{/data-search-box}}
+			{{#data-portlets}}
+			<div id="user-tools">
+				{{#data-personal}}{{>Portlet}}{{/data-personal}}
+			</div>
+			<div id="page-tools">
+				{{#data-namespaces}}{{>Portlet}}{{/data-namespaces}}
+				{{#data-variants}}{{>Portlet}}{{/data-variants}}
+				{{#data-views}}{{>Portlet}}{{/data-views}}
+				{{#data-actions}}{{>Portlet}}{{/data-actions}}
+			</div>
+			{{/data-portlets}}
+			<div id="site-navigation">
+				{{#data-portlets-sidebar.data-portlets-first}}{{>Portlet}}{{/data-portlets-sidebar.data-portlets-first}}
+				{{#data-portlets-sidebar.array-portlets-rest}}{{>Portlet}}{{/data-portlets-sidebar.array-portlets-rest}}
+				{{#data-portlets.data-languages}}{{>Portlet}}{{/data-portlets.data-languages}}
+			</div>
+		</div>
+	</nav>
+	<div class="mw-body container" id="content" role="main">
 		<div id="siteNotice">{{{html-site-notice}}}</div>
 		{{{html-user-message}}}
 		<div class="mw-indicators mw-body-content">
@@ -10,8 +46,8 @@
 		<div id="{{id}}" class="{{class}}">{{{html}}}</div>
 		{{/array-indicators}}
 		</div>
-		<h1 class="firstHeading" {{{html-user-language-attributes}}}>{{{html-title}}}</h1>
 		<div id="siteSub">{{msg-tagline}}</div>
+		<h1 class="firstHeading" {{{html-user-language-attributes}}}>{{{html-title}}}</h1>
 		<div class="mw-body-content">
 			<div id="contentSub">
 				{{{html-subtitle}}}
@@ -23,44 +59,6 @@
 			{{{html-categories}}}
 		</div>
 		{{{html-after-content}}}
-	</div>
-	<div id="mw-navigation">
-		<h2>{{msg-navigation-heading}}</h2>
-		<div id="p-logo" class="mw-portlet" role="banner">
-			<a href="{{link-mainpage}}">
-			{{#data-logos}}
-				{{#icon}}<img src="{{.}}" width="40" height="40">{{/icon}}
-				{{#wordmark}}<img src="{{src}}" width="{{width}}" height="{{height}}">{{/wordmark}}
-				{{^wordmark}}<h1>{{msg-sitetitle}}</h1>{{/wordmark}}
-			{{/data-logos}}
-			</a>
-		</div>
-		{{#data-search-box}}
-		<form action="{{form-action}}" role="search" class="mw-portlet" id="p-search">
-			<input type="hidden" name="title" value="{{page-title}}">
-			<h3>
-				<label for="searchInput">{{msg-search}}</label>
-			</h3>
-			{{{html-input}}}
-			{{{html-button-search}}}
-		</form>
-		{{/data-search-box}}
-		{{#data-portlets}}
-		<div id="user-tools">
-			{{#data-personal}}{{>Portlet}}{{/data-personal}}
-		</div>
-		<div id="page-tools">
-			{{#data-namespaces}}{{>Portlet}}{{/data-namespaces}}
-			{{#data-variants}}{{>Portlet}}{{/data-variants}}
-			{{#data-views}}{{>Portlet}}{{/data-views}}
-			{{#data-actions}}{{>Portlet}}{{/data-actions}}
-		</div>
-		{{/data-portlets}}
-		<div id="site-navigation">
-			{{#data-portlets-sidebar.data-portlets-first}}{{>Portlet}}{{/data-portlets-sidebar.data-portlets-first}}
-			{{#data-portlets-sidebar.array-portlets-rest}}{{>Portlet}}{{/data-portlets-sidebar.array-portlets-rest}}
-			{{#data-portlets.data-languages}}{{>Portlet}}{{/data-portlets.data-languages}}
-		</div>
 	</div>
 	<div id="footer" class="mw-footer" role="contentinfo" {{{html-user-language-attributes}}}>
 		{{#data-footer}}
