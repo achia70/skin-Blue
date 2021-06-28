@@ -11,7 +11,7 @@
 		"MediaWiki": ">= 1.36.0"
 	},
 	"ValidSkinNames": {
-		"example": {
+		"blue": {
 			"class": "SkinMustache",
 			"args": [ {
 				"name": "blue",
@@ -33,12 +33,12 @@
 		}
 	},
 	"MessagesDirs": {
-		"Example": [
+		"Blue": [
 			"i18n"
 		]
 	},
 	"ResourceModules": {
-		"skins.example": {
+		"skins.blue": {
 			"class": "ResourceLoaderSkinModule",
 			"features": {
 				"normalize": true,
@@ -63,7 +63,7 @@
 				}
 			}
 		},
-		"skins.example.js": {
+		"skins.blue.js": {
 			"scripts": [
 				"resources/main.js"
 			]
@@ -74,7 +74,7 @@
 		"remoteSkinPath": "Blue"
 	},
 	"ResourceModuleSkinStyles": {
-		"example": {
+		"blue": {
 			"+ext.echo.styles.badge": "resources/extensions/echo.styles.badge.less"
 		}
 	},
